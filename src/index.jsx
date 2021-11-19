@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { MainView } from './components/main-view/main-view';
 // scss file
 import './index.scss';
 
@@ -9,7 +9,7 @@ class AvengersFlixApp extends React.Component {
     render() {
         return (
             <div className='my-flix'>
-                <h1>Good night!</h1>
+                <MainView />
             </div>
         );
     }

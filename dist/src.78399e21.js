@@ -29566,7 +29566,98 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MainView = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var MainView = /*#__PURE__*/function (_React$Component) {
+  _inherits(MainView, _React$Component);
+
+  var _super = _createSuper(MainView);
+
+  function MainView() {
+    var _this;
+
+    _classCallCheck(this, MainView);
+
+    _this = _super.call(this);
+    _this.state = {
+      movies: [{
+        _id: 1,
+        Title: 'The Avengers',
+        Description: 'desc1...',
+        ImagePath: '...'
+      }, {
+        _id: 2,
+        Title: 'Avengers: Infinity War',
+        Description: 'desc2...',
+        ImagePath: '...'
+      }, {
+        _id: 3,
+        Title: 'Avengers: End Game',
+        Description: 'desc3...',
+        ImagePath: '...'
+      }]
+    };
+    return _this;
+  }
+
+  _createClass(MainView, [{
+    key: "render",
+    value: function render() {
+      var movies = this.state.movies;
+
+      if (movies.length === 0) {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          className: "main-view"
+        }, "The list is empty!");
+      }
+
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "main-view"
+      }, movies.map(function (movie) {
+        return /*#__PURE__*/_react.default.createElement("h1", {
+          key: movie._id
+        }, movie.Title);
+      }));
+    }
+  }]);
+
+  return MainView;
+}(_react.default.Component);
+
+exports.MainView = MainView;
+},{"react":"../node_modules/react/index.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29645,6 +29736,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
+var _mainView = require("./components/main-view/main-view");
+
 require("./index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29688,7 +29781,7 @@ var AvengersFlixApp = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "my-flix"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Good night!"));
+      }, /*#__PURE__*/_react.default.createElement(_mainView.MainView, null));
     }
   }]);
 
@@ -29699,7 +29792,7 @@ var AvengersFlixApp = /*#__PURE__*/function (_React$Component) {
 var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the root DOM element
 
 _reactDom.default.render(_react.default.createElement(AvengersFlixApp), container);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./index.scss":"index.scss"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./index.scss":"index.scss"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29727,7 +29820,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57720" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59150" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
