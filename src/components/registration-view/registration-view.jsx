@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
-export function registration-view() {
+export function RegistrationView() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
     }
 
     return (
