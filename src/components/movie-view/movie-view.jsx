@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// scss file 
+import './movie-view.scss'
+
 export class MovieView extends React.Component {
     render() {
         const { movie, backClick } = this.props;

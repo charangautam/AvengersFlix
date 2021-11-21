@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+// scss file 
+import './main-view.scss'
 // embedded conponents
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
