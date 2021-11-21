@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
 
-// scss file 
-import './login-view.scss'
-
-export function LoginView(props) {
+export function registration-view() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault;
-        console.log(`${username}, ${password}`);
-        props.onLoggedIn(username)
+        e.preventDefault();
+
     }
 
     return (
-        <form action="">
+        <div className='registration-view'>
             <div>
                 <label htmlFor="username">Username:</label>
                 <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} />
@@ -24,12 +20,11 @@ export function LoginView(props) {
                 <label htmlFor="username">Password:</label>
                 <input type="text" id="password" value={password} onChange={e => setPassword(e.target.value)} />
             </div>
-            <button className="submitButton" type="submit" onClick={handleSubmit}>Submit</button>
-            <button className="registerButton">Register</button>
-        </form>
+            <div>
+                <label htmlFor="email">Email:</label>
+                <input type="text" id="email" value={email} onChange={e => setEmail(e.target.value)} />
+            </div>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
+        </div>
     )
-}
-
-LoginView.propTypes = {
-    onLoggedIn: PropTypes.func.isRequired
 }

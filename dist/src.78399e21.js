@@ -32780,9 +32780,12 @@ function LoginView(props) {
       return setPassword(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("button", {
+    className: "submitButton",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"));
+  }, "Submit"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "registerButton"
+  }, "Register"));
 }
 
 LoginView.propTypes = {
