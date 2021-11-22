@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+// react-bootstrap UI
+import { Form, FloatingLabel, Button } from 'react-bootstrap';
+
 // scss file 
 import './login-view.scss'
 
@@ -15,18 +18,15 @@ export function LoginView(props) {
     }
 
     return (
-        <form action="">
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} />
-            </div>
-            <div>
-                <label htmlFor="username">Password:</label>
-                <input type="text" id="password" value={password} onChange={e => setPassword(e.target.value)} />
-            </div>
-            <button className="submitButton" type="submit" onClick={handleSubmit}>Submit</button>
-            <button className="registerButton">Register</button>
-        </form>
+        <Form className="login-view">
+            <FloatingLabel controlId="formUsername" label="Username" className="mb-3">
+                <Form.Control type="text" onChange={e => setUsername(e.target.value)} placeholder="username" />
+            </FloatingLabel>
+            <FloatingLabel controlId="formPassword" label="Password" className="mb-3">
+                <Form.Control type="text" onChange={e => setPassword(e.target.value)} placeholder="password" />
+            </FloatingLabel>
+            <Button variant="success" type="submit" onClick={handleSubmit}>Submit</Button>
+        </Form>
     )
 }
 

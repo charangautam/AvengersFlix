@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MainView } from './components/main-view/main-view';
+
+import Container from 'react-bootstrap/Container';
 // scss file
 import './index.scss';
 
@@ -8,9 +10,9 @@ import './index.scss';
 class AvengersFlixApp extends React.Component {
     render() {
         return (
-            <div className='my-flix'>
+            <Container className='my-flix'>
                 <MainView />
-            </div>
+            </Container>
         );
     }
 }

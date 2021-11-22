@@ -1,16 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// react-bootstrap UI
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 // scss file 
 import './movie-card.scss'
+import { CardGroup } from 'react-bootstrap';
 
 export class MovieCard extends React.Component {
     render() {
         const { movie, loadMovie } = this.props;
         return (
-            <div className='movie-card' onClick={() => loadMovie(movie)}>
-                <h1>{movie.Title}</h1>
-            </div>
+            <CardGroup>
+                <Card>
+                    <Card.Img variant="top" src={movie.ImgPath} />
+                    <Card.Body>
+                        <Card.Title>{movie.Title}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{movie.Director.Name}</Card.Subtitle>
+                        <Card.Text>{movie.Description}</Card.Text>
+                        <Button onClick={() => loadMovie(movie)}>Open details</Button>
+                    </Card.Body>
+                </Card>
+            </CardGroup>
         );
     }
 }
