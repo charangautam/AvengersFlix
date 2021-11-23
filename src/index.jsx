@@ -11,7 +11,7 @@ import './index.scss';
 class AvengersFlixApp extends React.Component {
     render() {
         return (
-            <Container className='my-flix'>
+            <Container fluid className='my-flix'>
                 <MainView />
             </Container>
         );

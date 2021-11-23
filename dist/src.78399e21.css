@@ -1,19 +1,25 @@
+.navar {
+  padding: 0;
+}
 .login-view {
   width: 60%;
   padding: 30px;
   border-radius: 14px;
-  background-color: #D4D4D4;
+  border: 4px ridge;
+  background-color: #EAEAEA;
 }
 .movie-img {
   width: 300px;
   height: 400px;
 }
-* {
-  box-sizing: border-box;
+:root {
+  background: #D4D4D4;
 }
 
 .my-flix {
   color: steelblue;
+  background: #D4D4D4;
+  font-family: "PT Sans", sans-serif;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

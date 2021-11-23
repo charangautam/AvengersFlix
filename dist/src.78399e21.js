@@ -50907,7 +50907,9 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/topbar/topbar.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../public/logo.png":[function(require,module,exports) {
+module.exports = "/logo.23cd8e28.png";
+},{}],"components/topbar/topbar.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50919,30 +50921,53 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactBootstrap = require("react-bootstrap");
 
+var _logo = _interopRequireDefault(require("../../../public/logo.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // react-bootstrap UI
+// logo img
 function Topbar() {
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
-    bg: "light",
-    variant: "light",
-    expand: "lg",
-    className: "topbar"
+    bg: "dark",
+    variant: "dark",
+    expand: "lg"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
-    href: "#home"
-  }, "AvengersFlix"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+    href: "#home",
+    className: "d-flex align-items-center",
+    style: {
+      fontFamily: 'Montserrat',
+      fontWeight: 700,
+      color: "rgb(149,149,149)"
+    }
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _logo.default,
+    height: "60",
+    width: "60",
+    className: "d-inline-block align-top",
+    alt: "AvengersFlix logo"
+  }), "vengersFlix"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
     "aria-controls": "basic-navbar-nav"
   }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
     id: "basic-navbar-nav"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
-    className: "me-auto"
+    className: "me-auto justify-content-end",
+    style: {
+      width: "100%"
+    }
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
-    href: "#home"
+    href: "#home",
+    style: {
+      fontSize: "19px"
+    }
   }, "Home"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
-    href: "#link"
+    href: "#link",
+    style: {
+      fontSize: "19px"
+    }
   }, "Profile")))));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/login-view/login-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../../../public/logo.png":"../public/logo.png"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -51003,7 +51028,10 @@ function LoginView(props) {
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
     className: "login-view"
   }, /*#__PURE__*/_react.default.createElement("h1", {
-    className: ""
+    style: {
+      fontFamily: 'Montserrat',
+      fontWeight: 700
+    }
   }, "Login"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
     controlId: "formUsername",
     label: "Username",
@@ -51106,7 +51134,11 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/_react.default.createElement(_Card.default, null, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImgPath
-      }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Subtitle, {
+      }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, {
+        style: {
+          fontWeight: 700
+        }
+      }, movie.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Subtitle, {
         className: "mb-2 text-muted"
       }, movie.Director.Name), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "info",
@@ -51195,14 +51227,18 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-view"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
         className: "m-4"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, movie.Title), /*#__PURE__*/_react.default.createElement("p", {
+      }, /*#__PURE__*/_react.default.createElement("h1", {
+        style: {
+          fontWeight: 700
+        }
+      }, movie.Title), /*#__PURE__*/_react.default.createElement("p", {
         className: "text-muted"
       }, movie.Director.Name), /*#__PURE__*/_react.default.createElement("p", null, "Released: ", movie.Released), /*#__PURE__*/_react.default.createElement("p", null, "Rating: ", movie.Rating, "/10"), /*#__PURE__*/_react.default.createElement("p", null, "Genre: ", movie.Genre.Name)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement("img", {
         className: "movie-img",
         src: movie.ImgPath
       }))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "m-4"
-      }, /*#__PURE__*/_react.default.createElement("h2", null, movie.Description)), /*#__PURE__*/_react.default.createElement("button", {
+      }, /*#__PURE__*/_react.default.createElement("h3", null, movie.Description)), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           return backClick(null);
         }
@@ -51341,9 +51377,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       });
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
+        styles: {
+          margin: 0
+        }
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
+        md: 12,
+        className: "mb-4 navar"
+      }, /*#__PURE__*/_react.default.createElement(_topbar.Topbar, null))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "justify-content-md-center"
-      }, /*#__PURE__*/_react.default.createElement(_topbar.Topbar, null), selectedMovie ? /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
+      }, /*#__PURE__*/_react.default.createElement("br", null), selectedMovie ? /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
         md: 8
       }, /*#__PURE__*/_react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie,
@@ -51363,7 +51406,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             return _this3.setMovie(movie);
           }
         }));
-      }));
+      })));
     }
   }]);
 
@@ -51429,6 +51472,7 @@ var AvengersFlixApp = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement(_Container.default, {
+        fluid: true,
         className: "my-flix"
       }, /*#__PURE__*/_react.default.createElement(_mainView.MainView, null));
     }
@@ -51469,7 +51513,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51226" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52079" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,11 +1,12 @@
 $primary-color : steelblue;
-$backgroud-color: #909090;
+$backgroud-color: #D4D4D4;
 
-* {
-    box-sizing: border-box;
+:root {
+    background: $backgroud-color;
 }
 
 .my-flix {
     color: $primary-color;
+    background: $backgroud-color;
+    font-family: 'PT Sans', sans-serif;
 }
-

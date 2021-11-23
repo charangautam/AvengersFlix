@@ -16,7 +16,7 @@ export class MovieCard extends React.Component {
             <Card>
                 <Card.Img variant="top" src={movie.ImgPath} />
                 <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
+                    <Card.Title style={{ fontWeight: 700 }}>{movie.Title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{movie.Director.Name}</Card.Subtitle>
                     <Card.Text>{movie.Description}</Card.Text>
                     <Button variant="info" onClick={() => loadMovie(movie)}>Open details</Button>

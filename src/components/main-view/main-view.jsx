@@ -48,23 +48,30 @@ export class MainView extends React.Component {
         if (movies.length === 0) return <div className="main-view" />;
 
         return (
-            <Row className="justify-content-md-center">
-                <Topbar />
-                {selectedMovie ?
-                    (
-                        <Col md={8}>
-                            <MovieView movie={selectedMovie} backClick={movie => this.setMovie(movie)} />
-                        </Col>
-                    ) :
-                    (
-                        movies.map(movie =>
-                            <Col sm={6} md={4} lg={3} className="mb-4">
-                                <MovieCard movie={movie} key={movie._id} loadMovie={movie => this.setMovie(movie)} />
+            <>
+                <Row styles={{ margin: 0 }}>
+                    <Col md={12} className="mb-4 navar">
+                        <Topbar />
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <br />
+                    {selectedMovie ?
+                        (
+                            <Col md={8}>
+                                <MovieView movie={selectedMovie} backClick={movie => this.setMovie(movie)} />
                             </Col>
+                        ) :
+                        (
+                            movies.map(movie =>
+                                <Col sm={6} md={4} lg={3} className="mb-4">
+                                    <MovieCard movie={movie} key={movie._id} loadMovie={movie => this.setMovie(movie)} />
+                                </Col>
+                            )
                         )
-                    )
-                }
-            </Row>
+                    }
+                </Row>
+            </>
         );
     }
 }

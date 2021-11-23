@@ -1,8 +1,10 @@
-$backgroud-color: #D4D4D4;
+$backgroud-color: #EAEAEA;
 
 .login-view {
     width: 60%;
     padding: 30px;
     border-radius: 14px;
+    border: 4px ridge;
     background-color: $backgroud-color;
+    
 }

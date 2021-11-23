@@ -12,7 +12,7 @@ export class MovieView extends React.Component {
             <Container className='movie-view'>
                 <Row>
                     <Col className="m-4">
-                        <h1>{movie.Title}</h1>
+                        <h1 style={{ fontWeight: 700 }}>{movie.Title}</h1>
                         <p className="text-muted">{movie.Director.Name}</p>
                         <p>Released: {movie.Released}</p>
                         <p>Rating: {movie.Rating}/10</p>
@@ -23,7 +23,7 @@ export class MovieView extends React.Component {
                     </Col>
                 </Row>
                 <Row className="m-4">
-                    <h2>{movie.Description}</h2>
+                    <h3>{movie.Description}</h3>
                 </Row>
 
                 <button onClick={() => backClick(null)}>Back</button>

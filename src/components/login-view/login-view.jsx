@@ -20,7 +20,7 @@ export function LoginView(props) {
     return (
         <div className="mt-5 d-flex algin-items-center justify-content-center">
             <Form className="login-view">
-                <h1 className="">Login</h1>
+                <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Login</h1>
                 <FloatingLabel controlId="formUsername" label="Username" className="mb-3 mt-4">
                     <Form.Control type="text" onChange={e => setUsername(e.target.value)} placeholder="username" />
                 </FloatingLabel>
