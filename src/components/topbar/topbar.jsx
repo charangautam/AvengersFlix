@@ -5,7 +5,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export function Topbar() {
   return (
-    <Navbar bg="light" variant="light" expand="lg" className="mb-5">
+    <Navbar bg="light" variant="light" expand="lg" className="topbar">
       <Container>
         <Navbar.Brand href="#home">AvengersFlix</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

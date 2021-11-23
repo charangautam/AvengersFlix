@@ -19,7 +19,7 @@ export class MovieView extends React.Component {
                         <p>Genre: {movie.Genre.Name}</p>
                     </Col>
                     <Col>
-                        <img src={movie.ImgPath} />
+                        <img className="movie-img" src={movie.ImgPath} />
                     </Col>
                 </Row>
                 <Row className="m-4">

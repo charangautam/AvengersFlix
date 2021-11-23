@@ -50927,7 +50927,7 @@ function Topbar() {
     bg: "light",
     variant: "light",
     expand: "lg",
-    className: "mb-5"
+    className: "topbar"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
     href: "#home"
   }, "AvengersFlix"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
@@ -51198,6 +51198,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement("h1", null, movie.Title), /*#__PURE__*/_react.default.createElement("p", {
         className: "text-muted"
       }, movie.Director.Name), /*#__PURE__*/_react.default.createElement("p", null, "Released: ", movie.Released), /*#__PURE__*/_react.default.createElement("p", null, "Rating: ", movie.Rating, "/10"), /*#__PURE__*/_react.default.createElement("p", null, "Genre: ", movie.Genre.Name)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement("img", {
+        className: "movie-img",
         src: movie.ImgPath
       }))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "m-4"
@@ -51468,7 +51469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62935" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51226" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
