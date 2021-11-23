@@ -1,9 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
+// react-bootstrap UI
+import { Row, Col } from 'react-bootstrap'
 // scss file 
 import './main-view.scss'
+
 // embedded conponents
+import { Topbar } from '../topbar/topbar';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -41,14 +45,27 @@ export class MainView extends React.Component {
 
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
 
-        if (selectedMovie) return <MovieView movie={selectedMovie} backClick={movie => this.setMovie(movie)} />
-
         if (movies.length === 0) return <div className="main-view" />;
 
         return (
-            <div className="main-view">
-                {movies.map(movie => <MovieCard movie={movie} key={movie._id} loadMovie={movie => this.setMovie(movie)} />)}
-            </div>
+            <Row className="justify-content-md-center">
+                <Topbar />
+                {selectedMovie ?
+                    (
+                        <Col md={8}>
+                            <MovieView movie={selectedMovie} backClick={movie => this.setMovie(movie)} />
+                        </Col>
+                    ) :
+                    (
+
+                        movies.map(movie =>
+                            <Col sm={6} md={4} lg={3} className="mb-4">
+                                <MovieCard movie={movie} key={movie._id} loadMovie={movie => this.setMovie(movie)} />
+                            </Col>
+                        )
+                    )
+                }
+            </Row>
         );
     }
 }

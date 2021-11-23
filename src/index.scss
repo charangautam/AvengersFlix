@@ -1,10 +1,11 @@
-$color : steelblue;
+$primary-color : steelblue;
+$backgroud-color: #909090;
+
+* {
+    box-sizing: border-box;
+}
 
 .my-flix {
-    color: $color;
+    color: $primary-color;
 }
 
-img {
-    width: 300px;
-    height: 400px;
-}
