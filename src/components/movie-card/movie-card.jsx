@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // react-bootstrap UI
 import Button from 'react-bootstrap/Button';
@@ -19,7 +20,9 @@ export class MovieCard extends React.Component {
                     <Card.Title style={{ fontWeight: 700 }}>{movie.Title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{movie.Director.Name}</Card.Subtitle>
                     <Card.Text>{movie.Description}</Card.Text>
-                    <Button variant="info" onClick={() => loadMovie(movie)}>Open details</Button>
+                    <Link to={`/movies/${movie._id}`}>
+                        <Button variant="link" onClick={() => loadMovie(movie)}>Open details</Button>
+                    </Link>
                 </Card.Body>
             </Card>
         );

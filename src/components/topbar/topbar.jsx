@@ -1,13 +1,13 @@
 import React from 'react';
 
 // react-bootstrap UI
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 // logo img
 import img from "../../../public/logo.png"
 
 
-export function Topbar() {
+export function Topbar({ onLoggedOut }) {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -22,10 +22,10 @@ export function Topbar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto justify-content-end" style={{ width: "100%" }}>
-            <Nav.Link href="#home" style={{ fontSize: "19px" }}>Home</Nav.Link>
-            <Nav.Link href="#link" style={{ fontSize: "19px" }}>Profile</Nav.Link>
+          <Nav className="me-auto justify-content-center" style={{ width: "100%" }}>
+            <Nav.Link href="#link" style={{ fontSize: "20px" }}>Profile</Nav.Link>
           </Nav>
+          <Button variant="danger" onClick={onLoggedOut} style={{ width: "90px" }}>Log out</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
