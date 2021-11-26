@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // react-bootstrap UI
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 
 
-export function ProfileView({ user }) {
+export function ProfileView({ user, onLoggedOut }) {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,12 +28,25 @@ export function ProfileView({ user }) {
             Birthday: birthday
         })
             .then(response => {
-                const data = response.data;
-                console.log(data);
+                console.log(response.data);
                 window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
             })
             .catch(e => {
                 console.log('error registering the user')
+            });
+    }
+
+    const token = localStorage.getItem('token')
+    const handleDelete = () => {
+        axios.delete(`https://avengers-database.herokuapp.com/users/${user}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+            .then(response => {
+                console.log(response.data);
+                onLoggedOut()
+            })
+            .catch(err => {
+                console.error(err)
             });
     }
 
@@ -58,6 +72,9 @@ export function ProfileView({ user }) {
                 <div className="d-grid gap-2">
                     <Button size="lg" variant="success" type="submit">Submit</Button>
                 </div>
+                <Link to={'/'}>
+                    <Button size="lg" variant="danger" className="mt-5 w-75" onClick={handleDelete}>Delete Account</Button>
+                </Link>
             </Form>
         </div>
     )

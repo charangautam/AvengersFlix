@@ -28,7 +28,9 @@ export function Topbar({ onLoggedOut }) {
           <Nav className="me-auto justify-content-center" style={{ width: "100%" }}>
             <Nav.Link href="/profile" style={{ fontSize: "20px" }}>Profile</Nav.Link>
           </Nav>
-          <Button variant="danger" onClick={onLoggedOut} style={{ width: "90px" }}>Log out</Button>
+          <Link to={'/'}>
+            <Button variant="danger" onClick={onLoggedOut} style={{ width: "90px" }}>Log out</Button>
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

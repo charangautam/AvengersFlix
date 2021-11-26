@@ -54172,8 +54172,7 @@ function RegistrationView() {
       Email: email,
       Birthday: birthday
     }).then(function (response) {
-      var data = response.data;
-      console.log(data);
+      console.log(response.data);
       window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
     }).catch(function (e) {
       setError('Username already exists please pick another one');
@@ -54321,13 +54320,15 @@ function Topbar(_ref) {
     style: {
       fontSize: "20px"
     }
-  }, "Profile")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+  }, "Profile")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: '/'
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
     variant: "danger",
     onClick: onLoggedOut,
     style: {
       width: "90px"
     }
-  }, "Log out"))));
+  }, "Log out")))));
 }
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../../../public/logo.png":"../public/logo.png"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
@@ -54340,6 +54341,8 @@ exports.ProfileView = ProfileView;
 var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _reactRouterDom = require("react-router-dom");
 
 var _reactBootstrap = require("react-bootstrap");
 
@@ -54362,7 +54365,8 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ProfileView(_ref) {
-  var user = _ref.user;
+  var user = _ref.user,
+      onLoggedOut = _ref.onLoggedOut;
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -54402,11 +54406,25 @@ function ProfileView(_ref) {
       Email: email,
       Birthday: birthday
     }).then(function (response) {
-      var data = response.data;
-      console.log(data);
+      console.log(response.data);
       window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
     }).catch(function (e) {
       console.log('error registering the user');
+    });
+  };
+
+  var token = localStorage.getItem('token');
+
+  var handleDelete = function handleDelete() {
+    _axios.default.delete("https://avengers-database.herokuapp.com/users/".concat(user), {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
+      console.log(response.data);
+      onLoggedOut();
+    }).catch(function (err) {
+      console.error(err);
     });
   };
 
@@ -54478,9 +54496,16 @@ function ProfileView(_ref) {
     size: "lg",
     variant: "success",
     type: "submit"
-  }, "Submit"))));
+  }, "Submit")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: '/'
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+    size: "lg",
+    variant: "danger",
+    className: "mt-5 w-75",
+    onClick: handleDelete
+  }, "Delete Account"))));
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54595,8 +54620,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactRouterDom = require("react-router-dom");
-
 var _reactBootstrap = require("react-bootstrap");
 
 require("./movie-view.scss");
@@ -54615,11 +54638,11 @@ function MovieView(_ref) {
     style: {
       fontWeight: 700
     }
-  }, movie.Title), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, movie.Title), /*#__PURE__*/_react.default.createElement(Link, {
     to: "/directors/".concat(movie.Director.Name)
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "text-muted"
-  }, movie.Director.Name)), /*#__PURE__*/_react.default.createElement("p", null, "Released: ", movie.Released), /*#__PURE__*/_react.default.createElement("p", null, "Rating: ", movie.Rating, "/10"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, movie.Director.Name)), /*#__PURE__*/_react.default.createElement("p", null, "Released: ", movie.Released), /*#__PURE__*/_react.default.createElement("p", null, "Rating: ", movie.Rating, "/10"), /*#__PURE__*/_react.default.createElement(Link, {
     to: "/genres/".concat(movie.Genre.Name),
     style: {
       textDecoration: 'none',
@@ -54658,7 +54681,7 @@ MovieView.propTypes = {
   }).isRequired,
   onBackClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54825,7 +54848,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
-      user: {},
+      user: null,
       movies: []
     };
     return _this;
@@ -54887,17 +54910,22 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           user = _this$state.user;
-      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
-        md: 12,
-        className: "mb-4",
-        style: {
-          padding: 0
+      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+        path: "/",
+        render: function render() {
+          if (user) return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
+            md: 12,
+            className: "mb-4",
+            style: {
+              padding: 0
+            }
+          }, /*#__PURE__*/_react.default.createElement(_topbar.Topbar, {
+            onLoggedOut: function onLoggedOut() {
+              return _this3.onLoggedOut();
+            }
+          })));
         }
-      }, /*#__PURE__*/_react.default.createElement(_topbar.Topbar, {
-        onLoggedOut: function onLoggedOut() {
-          return _this3.onLoggedOut();
-        }
-      }))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
+      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "justify-content-md-center p-2"
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         exact: true,
@@ -54943,7 +54971,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             className: "main-view"
           });
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_profileView.ProfileView, {
-            user: user
+            user: user,
+            onLoggedOut: function onLoggedOut() {
+              return _this3.onLoggedOut();
+            }
           }));
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -55125,7 +55156,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61329" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51618" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -21,7 +21,7 @@ export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: {},
+            user: null,
             movies: [],
         }
     }
@@ -65,11 +65,13 @@ export class MainView extends React.Component {
 
         return (
             <Router>
-                <Row>
-                    <Col md={12} className="mb-4" style={{ padding: 0 }}>
-                        <Topbar onLoggedOut={() => this.onLoggedOut()} />
-                    </Col>
-                </Row>
+                <Route path='/' render={() => {
+                    if (user) return <Row>
+                        <Col md={12} className="mb-4" style={{ padding: 0 }}>
+                            <Topbar onLoggedOut={() => this.onLoggedOut()} />
+                        </Col>
+                    </Row>
+                }} />
                 <Row className="justify-content-md-center p-2">
 
                     {/* login page or main movies page */}
@@ -100,7 +102,7 @@ export class MainView extends React.Component {
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col>
-                            <ProfileView user={user} />
+                            <ProfileView user={user} onLoggedOut={() => this.onLoggedOut()} />
                         </Col>
                     }} />
 
