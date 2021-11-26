@@ -5,9 +5,30 @@
   border: 4px ridge;
   background-color: #EAEAEA;
 }
+
+.register-button {
+  width: 60%;
+  margin-top: 30px;
+}
+.registration-view {
+  width: 60%;
+  padding: 30px;
+  border-radius: 14px;
+  border: 4px ridge;
+  background-color: #EAEAEA;
+}
+
+.login-button {
+  width: 60%;
+  margin-top: 30px;
+}
 .movie-img {
   width: 300px;
   height: 400px;
+}
+
+.movie-view p {
+  font-size: 20px;
 }
 :root {
   background: #D4D4D4;
