@@ -42,7 +42,7 @@ export class MainView extends React.Component {
         this.setState({ user: authData.user });
 
         localStorage.setItem('token', authData.token);
-        localStorage.setItem('user', authData.user.Username);
+        localStorage.setItem('user', JSON.stringify(authData.user));
         this.getMovies(authData.token);
     }
 
@@ -55,9 +55,14 @@ export class MainView extends React.Component {
     componentDidMount() {
         let jwtToken = localStorage.getItem('token');
         if (jwtToken !== null) {
-            this.setState({ user: localStorage.getItem('user') });
+            this.setState({ user: JSON.parse(localStorage.getItem('user')) });
             this.getMovies(jwtToken)
         }
+    }
+
+    setUser(user) {
+        this.setState({ user });
+        localStorage.setItem('user', JSON.stringify(user));
     }
 
     render() {
@@ -101,8 +106,11 @@ export class MainView extends React.Component {
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
-                        return <Col>
-                            <ProfileView user={user} onLoggedOut={() => this.onLoggedOut()} />
+                        return <Col md={12}>
+                            <ProfileView user={user} setUser={user => this.setUser(user)}
+                                movies={movies} onLoggedOut={() => this.onLoggedOut()}
+
+                            />
                         </Col>
                     }} />
 
@@ -113,7 +121,9 @@ export class MainView extends React.Component {
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={8}>
-                            <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
+                            <MovieView movie={movies.find(m => m._id === match.params.movieId)} user={user}
+                                setUser={user => this.setUser(user)} onBackClick={() => history.goBack()}
+                            />
                         </Col>
                     }} />
 
@@ -124,7 +134,9 @@ export class MainView extends React.Component {
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={8}>
-                            <DirectorView movie={movies.find(m => m.Director.Name === match.params.directorName)} onBackClick={() => history.goBack()} />
+                            <DirectorView movie={movies.find(m => m.Director.Name === match.params.directorName)}
+                                onBackClick={() => history.goBack()}
+                            />
                         </Col>
                     }} />
 

@@ -17,9 +17,10 @@ export function RegistrationView() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // error validation
         if (username.length < 4) return setError('Must include a username that is longer than 4 characters');
         if (password.length < 6) return setError('Must include a password that is longer than 6 characters');
-        var alphaNum = /^[0-9a-zA-Z]+$/;
+        const alphaNum = /^[0-9a-zA-Z]+$/;
         if (!username.match(alphaNum)) return setError('Username must contain only letters and numbers');
 
         axios.post('https://avengers-database.herokuapp.com/users/', {

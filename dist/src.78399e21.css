@@ -22,6 +22,21 @@
   width: 60%;
   margin-top: 30px;
 }
+.user-info {
+  margin: 40px 20px;
+}
+
+.update-form {
+  width: 70%;
+  padding: 30px;
+  border-radius: 14px;
+  border: 4px ridge;
+  background-color: #EAEAEA;
+}
+
+h5 {
+  line-height: 2;
+}
 .movie-img {
   width: 300px;
   height: 400px;

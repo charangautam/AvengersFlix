@@ -17,6 +17,7 @@ export function LoginView({ onLoggedIn }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // error validation
         if (username.length < 4) return setError('Must include a username that is longer than 4 characters');
         if (password.length < 6) return setError('Must include a password that is longer than 6 characters');
 
