@@ -13,6 +13,7 @@ import './profile-view.scss';
 export function ProfileView({ user, setUser, movies, onLoggedOut }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
     const [favoriteMovies, setFavoriteMovies] = useState([]);
@@ -36,8 +37,11 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
             { password.length < 6 && setError('Password must be longer than 6 characters') }
         } else {
             setPassword(user.Password);
+            setConfirmPassword(user.Password);
             setError('Empty fields filled in with current info. Submit again!')
         }
+
+        if (password !== confirmPassword) return setError(`Passwords do not match`)
 
         if (!email) {
             setEmail(user.Email);
@@ -64,13 +68,6 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
                 console.log('error updating the user')
             });
     }
-
-    // useEffect(() => {
-    //     user.FavoriteMovies.map(movieID => {
-    //         let movie = movies.find(m => m._id === movieID)
-    //         setFavoriteMovies([...favoriteMovies, movie.Username])
-    //     })
-    // }, [favoriteMovies, setFavoriteMovies, movies, user])
 
 
     const handleDelete = () => {
@@ -104,19 +101,22 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
                                     let movie = movies.find(m => m._id === movieId)
                                     return <li key={movieId}>{movie.Title}</li>
                                 })}</ul>
-                            </h5>
-                            }
+                            </h5>}
                         </div>
                     </div>
                 </Col>
                 <Col md={8} className="d-flex justify-content-center">
                     <Form className="update-form" onSubmit={handleSubmit} style={{ textAlign: "center" }}>
                         <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Update User</h1>
+                        <p className="text-secondary">Only fill in the fields you want updated</p>
                         <FloatingLabel controlId="formUsername" label="Username" className="mb-3 mt-4">
                             <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="username" />
                         </FloatingLabel>
                         <FloatingLabel controlId="formPassword" label="Password" className="mb-3">
                             <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="password" />
+                        </FloatingLabel>
+                        <FloatingLabel controlId="formConfirmPassword" label="Confirm Password*" className="mb-3">
+                            <Form.Control type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="confirmPassword" />
                         </FloatingLabel>
                         <FloatingLabel controlId="formEmail" label="Email" className="mb-3">
                             <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="email" />

@@ -9,8 +9,9 @@ import './registration-view.scss';
 
 export function RegistrationView() {
     const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
     const [error, setError] = useState('');
 
@@ -22,6 +23,7 @@ export function RegistrationView() {
         if (password.length < 6) return setError('Must include a password that is longer than 6 characters');
         const alphaNum = /^[0-9a-zA-Z]+$/;
         if (!username.match(alphaNum)) return setError('Username must contain only letters and numbers');
+        if (password !== confirmPassword) return setError('Passwords do not match');
 
         axios.post('https://avengers-database.herokuapp.com/users/', {
             Username: username,
@@ -48,6 +50,9 @@ export function RegistrationView() {
                 </FloatingLabel>
                 <FloatingLabel controlId="formPassword" label="Password*" className="mb-3">
                     <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="password" required />
+                </FloatingLabel>
+                <FloatingLabel controlId="formConfirmPassword" label="Confirm Password*" className="mb-3">
+                    <Form.Control type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="confirmPassword" required />
                 </FloatingLabel>
                 <FloatingLabel controlId="formEmail" label="Email*" className="mb-3">
                     <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="email" required />

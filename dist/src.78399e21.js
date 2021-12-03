@@ -54142,23 +54142,28 @@ function RegistrationView() {
 
   var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      email = _useState4[0],
-      setEmail = _useState4[1];
+      password = _useState4[0],
+      setPassword = _useState4[1];
 
   var _useState5 = (0, _react.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      password = _useState6[0],
-      setPassword = _useState6[1];
+      confirmPassword = _useState6[0],
+      setConfirmPassword = _useState6[1];
 
   var _useState7 = (0, _react.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      birthday = _useState8[0],
-      setBirthday = _useState8[1];
+      email = _useState8[0],
+      setEmail = _useState8[1];
 
   var _useState9 = (0, _react.useState)(''),
       _useState10 = _slicedToArray(_useState9, 2),
-      error = _useState10[0],
-      setError = _useState10[1];
+      birthday = _useState10[0],
+      setBirthday = _useState10[1];
+
+  var _useState11 = (0, _react.useState)(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      error = _useState12[0],
+      setError = _useState12[1];
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault(); // error validation
@@ -54167,6 +54172,7 @@ function RegistrationView() {
     if (password.length < 6) return setError('Must include a password that is longer than 6 characters');
     var alphaNum = /^[0-9a-zA-Z]+$/;
     if (!username.match(alphaNum)) return setError('Username must contain only letters and numbers');
+    if (password !== confirmPassword) return setError('Passwords do not match');
 
     _axios.default.post('https://avengers-database.herokuapp.com/users/', {
       Username: username,
@@ -54218,6 +54224,18 @@ function RegistrationView() {
       return setPassword(e.target.value);
     },
     placeholder: "password",
+    required: true
+  })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
+    controlId: "formConfirmPassword",
+    label: "Confirm Password*",
+    className: "mb-3"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    type: "password",
+    value: confirmPassword,
+    onChange: function onChange(e) {
+      return setConfirmPassword(e.target.value);
+    },
+    placeholder: "confirmPassword",
     required: true
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
     controlId: "formEmail",
@@ -60069,23 +60087,28 @@ function ProfileView(_ref) {
 
   var _useState5 = (0, _react.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
+      confirmPassword = _useState6[0],
+      setConfirmPassword = _useState6[1];
 
   var _useState7 = (0, _react.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      birthday = _useState8[0],
-      setBirthday = _useState8[1];
+      email = _useState8[0],
+      setEmail = _useState8[1];
 
-  var _useState9 = (0, _react.useState)([]),
+  var _useState9 = (0, _react.useState)(''),
       _useState10 = _slicedToArray(_useState9, 2),
-      favoriteMovies = _useState10[0],
-      setFavoriteMovies = _useState10[1];
+      birthday = _useState10[0],
+      setBirthday = _useState10[1];
 
-  var _useState11 = (0, _react.useState)(''),
+  var _useState11 = (0, _react.useState)([]),
       _useState12 = _slicedToArray(_useState11, 2),
-      error = _useState12[0],
-      setError = _useState12[1];
+      favoriteMovies = _useState12[0],
+      setFavoriteMovies = _useState12[1];
+
+  var _useState13 = (0, _react.useState)(''),
+      _useState14 = _slicedToArray(_useState13, 2),
+      error = _useState14[0],
+      setError = _useState14[1];
 
   var token = localStorage.getItem('token');
 
@@ -60112,8 +60135,11 @@ function ProfileView(_ref) {
       }
     } else {
       setPassword(user.Password);
+      setConfirmPassword(user.Password);
       setError('Empty fields filled in with current info. Submit again!');
     }
+
+    if (password !== confirmPassword) return setError("Passwords do not match");
 
     if (!email) {
       setEmail(user.Email);
@@ -60142,13 +60168,7 @@ function ProfileView(_ref) {
     }).catch(function (e) {
       console.log('error updating the user');
     });
-  }; // useEffect(() => {
-  //     user.FavoriteMovies.map(movieID => {
-  //         let movie = movies.find(m => m._id === movieID)
-  //         setFavoriteMovies([...favoriteMovies, movie.Username])
-  //     })
-  // }, [favoriteMovies, setFavoriteMovies, movies, user])
-
+  };
 
   var handleDelete = function handleDelete() {
     _axios.default.delete("https://avengers-database.herokuapp.com/users/".concat(user.Username), {
@@ -60203,7 +60223,9 @@ function ProfileView(_ref) {
       fontFamily: 'Montserrat',
       fontWeight: 700
     }
-  }, "Update User"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
+  }, "Update User"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "text-secondary"
+  }, "Only fill in the fields you want updated"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
     controlId: "formUsername",
     label: "Username",
     className: "mb-3 mt-4"
@@ -60225,6 +60247,17 @@ function ProfileView(_ref) {
       return setPassword(e.target.value);
     },
     placeholder: "password"
+  })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
+    controlId: "formConfirmPassword",
+    label: "Confirm Password*",
+    className: "mb-3"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    type: "password",
+    value: confirmPassword,
+    onChange: function onChange(e) {
+      return setConfirmPassword(e.target.value);
+    },
+    placeholder: "confirmPassword"
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FloatingLabel, {
     controlId: "formEmail",
     label: "Email",
