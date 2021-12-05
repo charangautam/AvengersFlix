@@ -10,13 +10,13 @@ import { Container, Row, Col, Form, FloatingLabel, Button } from 'react-bootstra
 import './profile-view.scss';
 
 
-export function ProfileView({ user, setUser, movies, onLoggedOut }) {
+export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
-    const [favoriteMovies, setFavoriteMovies] = useState([]);
+
     const [error, setError] = useState('')
 
 
@@ -85,9 +85,9 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
 
 
     return (
-        <Container className="mt-3">
+        <Container fluid className="mt-3">
             <Row>
-                <Col md={4}>
+                <Col md={5}>
                     <div>
                         <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Current Details</h1>
                         <div className="user-info">
@@ -99,14 +99,20 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
                             {user.FavoriteMovies.length > 0 && <h5><span className="text-muted">Favorited Movies</span>
                                 <ul>{user.FavoriteMovies.map(movieId => {
                                     let movie = movies.find(m => m._id === movieId)
-                                    return <li key={movieId}>{movie.Title}</li>
+                                    return (
+                                        <Link to={`/movies/${movieId}`} style={{ "textDecoration": "none" }} key={movieId}>
+                                            <li>{movie.Title}</li>
+                                        </Link>
+                                    )
                                 })}</ul>
                             </h5>}
                         </div>
+                        <Button variant="dark" className="mt-4" size="md" onClick={() => onBackClick()}>Back</Button>
+
                     </div>
                 </Col>
-                <Col md={8} className="d-flex justify-content-center">
-                    <Form className="update-form" onSubmit={handleSubmit} style={{ textAlign: "center" }}>
+                <Col md={7} className="d-flex justify-content-center">
+                    <Form className="update-form" onSubmit={handleSubmit} style={{ "textAlign": "center" }}>
                         <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Update User</h1>
                         <p className="text-secondary">Only fill in the fields you want updated</p>
                         <FloatingLabel controlId="formUsername" label="Username" className="mb-3 mt-4">
@@ -115,7 +121,7 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
                         <FloatingLabel controlId="formPassword" label="Password" className="mb-3">
                             <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="password" />
                         </FloatingLabel>
-                        <FloatingLabel controlId="formConfirmPassword" label="Confirm Password*" className="mb-3">
+                        <FloatingLabel controlId="formConfirmPassword" label="Confirm Password" className="mb-3">
                             <Form.Control type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="confirmPassword" />
                         </FloatingLabel>
                         <FloatingLabel controlId="formEmail" label="Email" className="mb-3">
@@ -134,7 +140,6 @@ export function ProfileView({ user, setUser, movies, onLoggedOut }) {
                     </Form>
                 </Col>
             </Row>
-
         </Container>
     )
 }

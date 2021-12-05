@@ -1,3 +1,12 @@
+:root {
+  background: #D4D4D4;
+}
+
+.my-flix {
+  color: steelblue;
+  background: #D4D4D4;
+  font-family: "PT Sans", sans-serif;
+}
 .login-view {
   width: 60%;
   padding: 30px;
@@ -27,7 +36,7 @@
 }
 
 .update-form {
-  width: 70%;
+  width: 90%;
   padding: 30px;
   border-radius: 14px;
   border: 4px ridge;
@@ -37,6 +46,12 @@
 h5 {
   line-height: 2;
 }
+
+@media screen and (max-width: 760px) {
+  .update-form {
+    margin-top: 90px;
+  }
+}
 .movie-img {
   width: 300px;
   height: 400px;
@@ -44,15 +59,6 @@ h5 {
 
 .movie-view p {
   font-size: 20px;
-}
-:root {
-  background: #D4D4D4;
-}
-
-.my-flix {
-  color: steelblue;
-  background: #D4D4D4;
-  font-family: "PT Sans", sans-serif;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

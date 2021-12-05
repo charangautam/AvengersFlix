@@ -5,7 +5,7 @@ $backgroud-color: #EAEAEA;
 }
 
 .update-form {
-    width: 70%;
+    width: 90%;
     padding: 30px;
     border-radius: 14px;
     border: 4px ridge;
@@ -14,4 +14,10 @@ $backgroud-color: #EAEAEA;
 
 h5 {
     line-height: 2;
+}
+
+@media screen and (max-width: 760px) {
+    .update-form {
+        margin-top: 90px;
+    }
 }

@@ -1,19 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MainView } from './components/main-view/main-view';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import moviesApp from './reducers/reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 
 // react-bootstrap UI
 import Container from 'react-bootstrap/Container';
 // scss file
 import './index.scss';
 
+// embedded component
+import MainView from './components/main-view/main-view';
+
+const store = createStore(moviesApp, devToolsEnhancer());
+
 // Main component (will eventually use all the others)
 class AvengersFlixApp extends React.Component {
     render() {
         return (
-            <Container fluid className='my-flix'>
-                <MainView />
-            </Container>
+            <Provider store={store}>
+                <Container fluid className='my-flix'>
+                    <MainView />
+                </Container>
+            </Provider>
         );
     }
 }
