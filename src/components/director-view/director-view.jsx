@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 export function DirectorView({ movie, onBackClick }) {
     return (
-        <div className='director-view'>
+        <div className='director-view mt-5'>
             <h1 style={{ fontWeight: 700 }}>{movie.Director.Name}</h1>
             <h4 className="m-4">{movie.Director.Bio}</h4>
             <h4 className="m-4">Age: {movie.Director.Age}</h4>

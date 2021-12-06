@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import moviesApp from './reducers/reducers';
-import { devToolsEnhancer } from 'redux-devtools-extension';
 
 // react-bootstrap UI
 import Container from 'react-bootstrap/Container';
@@ -13,7 +12,7 @@ import './index.scss';
 // embedded component
 import MainView from './components/main-view/main-view';
 
-const store = createStore(moviesApp, devToolsEnhancer());
+const store = createStore(moviesApp);
 
 // Main component (will eventually use all the others)
 class AvengersFlixApp extends React.Component {

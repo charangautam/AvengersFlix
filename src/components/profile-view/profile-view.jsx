@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable no-lone-blocks */
+import React, { useState } from 'react'
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
 // react-bootstrap UI
 import { Container, Row, Col, Form, FloatingLabel, Button } from 'react-bootstrap';
 // scss file
 import './profile-view.scss';
 
-
-export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick }) {
+function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -85,7 +86,7 @@ export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick })
 
 
     return (
-        <Container fluid className="mt-3">
+        <Container fluid className="mt-4">
             <Row>
                 <Col md={5}>
                     <div>
@@ -144,13 +145,26 @@ export function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick })
     )
 }
 
+const mapStateToProps = state => {
+    const { user, movies } = state;
+    return { user, movies };
+}
+
+export default connect(mapStateToProps)(ProfileView);
+
 ProfileView.propTypes = {
     user: PropTypes.shape({
         Username: PropTypes.string.isRequired,
         Email: PropTypes.string.isRequired,
         Password: PropTypes.string.isRequired,
-        Birthday: PropTypes.date,
+        Birthday: PropTypes.instanceOf(Date),
         FavoriteMovies: PropTypes.array
     }).isRequired,
+    movies: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        Title: PropTypes.string.isRequired,
+    }),
     setUser: PropTypes.func.isRequired,
+    onLoggedOut: PropTypes.func.isRequired,
+    onBackClick: PropTypes.func.isRequired,
 }

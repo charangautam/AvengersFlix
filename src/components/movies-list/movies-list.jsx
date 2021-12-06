@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // // react-bootstrap UI
@@ -7,11 +8,6 @@ import Col from 'react-bootstrap/Col'
 // embedded components
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
-
-const mapStateToProps = state => {
-    const { visibilityFilter } = state;
-    return { visibilityFilter };
-}
 
 function MoviesList({ movies, visibilityFilter }) {
     let filteredMovies = movies
@@ -24,7 +20,7 @@ function MoviesList({ movies, visibilityFilter }) {
 
     return <>
         <Col md={12}>
-            <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+            <VisibilityFilterInput />
         </Col>
         {filteredMovies.map(movie => (
             <Col sm={6} md={4} lg={3} className="mb-4" key={movie._id}>
@@ -34,4 +30,14 @@ function MoviesList({ movies, visibilityFilter }) {
     </>;
 }
 
+const mapStateToProps = state => {
+    const { visibilityFilter, movies } = state;
+    return { visibilityFilter, movies };
+}
+
 export default connect(mapStateToProps)(MoviesList);
+
+MoviesList.propTypes = {
+    movies: PropTypes.array.isRequired,
+    visibilityFilter: PropTypes.string.isRequired
+}

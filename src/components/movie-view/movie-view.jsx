@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
 // scss file 
@@ -46,12 +47,12 @@ export function MovieView({ movie, user, setUser, onBackClick }) {
                         <p><span className="text-muted">Genre:</span> {movie.Genre.Name}</p>
                     </Link>
                     {user.FavoriteMovies.includes(movie._id)
-                        ? <Button variant="danger" onClick={pullFromFave}>Delete from favorites</Button>
+                        ? <Button variant="danger" onClick={pullFromFave}>Remove from favorites</Button>
                         : <Button variant="warning" onClick={addToFave}>Add to favorites</Button>
                     }
                 </Col>
                 <Col>
-                    <img className="movie-img" src={movie.ImgPath} />
+                    <img className="movie-img" src={movie.ImgPath} alt={`Movie poster of ${movie.Title}`} />
                 </Col>
             </Row>
             <Row className="mt-4">
@@ -61,6 +62,13 @@ export function MovieView({ movie, user, setUser, onBackClick }) {
         </Container >
     )
 }
+
+const mapStateToProps = state => {
+    const { user } = state;
+    return { user };
+}
+
+export default connect(mapStateToProps)(MovieView);
 
 
 MovieView.propTypes = {

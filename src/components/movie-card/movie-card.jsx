@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 // react-bootstrap UI
 import { Card, Button } from 'react-bootstrap';
-// scss file 
-import './movie-card.scss'
 
 export class MovieCard extends React.Component {
     render() {

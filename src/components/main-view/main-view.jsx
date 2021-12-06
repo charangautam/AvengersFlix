@@ -5,28 +5,22 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 // react-bootstrap UI
 import { Row, Col } from 'react-bootstrap'
-// scss file 
-import './main-view.scss'
 
+// actions
 import { setMovies } from '../../actions/actions';
+import { setUser } from '../../actions/actions';
 
 // embedded conponents
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { Topbar } from '../topbar/topbar';
-import { ProfileView } from '../profile-view/profile-view';
-import { MovieView } from '../movie-view/movie-view';
+import ProfileView from '../profile-view/profile-view';
+import MovieView from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 
 class MainView extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            user: null
-        };
-    }
 
     getMovies(token) {
         axios.get('https://avengers-database.herokuapp.com/movies/', {
@@ -41,7 +35,7 @@ class MainView extends React.Component {
     }
 
     onLoggedIn(authData) {
-        this.setState({ user: authData.user });
+        this.props.setUser(authData.user);
 
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', JSON.stringify(authData.user));
@@ -51,25 +45,24 @@ class MainView extends React.Component {
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.setState({ user: null });
+        this.props.setUser(null);
     }
 
     setUser(user) {
-        this.setState({ user });
+        this.props.setUser(user);
         localStorage.setItem('user', JSON.stringify(user));
     }
 
     componentDidMount() {
         let jwtToken = localStorage.getItem('token');
         if (jwtToken !== null) {
-            this.setState({ user: JSON.parse(localStorage.getItem('user')) });
-            this.getMovies(jwtToken)
+            this.props.setUser(JSON.parse(localStorage.getItem('user')));
+            this.getMovies(jwtToken);
         }
     }
 
     render() {
-        const { movies } = this.props;
-        const { user } = this.state;
+        const { movies, user } = this.props;
 
         return (
             <Router>
@@ -88,7 +81,7 @@ class MainView extends React.Component {
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
-                        return <MoviesList movies={movies} />
+                        return <MoviesList />
                     }} />
 
                     {/* register page */}
@@ -106,8 +99,8 @@ class MainView extends React.Component {
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={12}>
-                            <ProfileView user={user} setUser={user => this.setUser(user)}
-                                movies={movies} onLoggedOut={() => this.onLoggedOut()} onBackClick={() => history.goBack()}
+                            <ProfileView setUser={user => this.setUser(user)}
+                                onLoggedOut={() => this.onLoggedOut()} onBackClick={() => history.goBack()}
                             />
                         </Col>
                     }} />
@@ -119,7 +112,7 @@ class MainView extends React.Component {
                         </Col>
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={8}>
-                            <MovieView movie={movies.find(m => m._id === match.params.movieId)} user={user}
+                            <MovieView movie={movies.find(m => m._id === match.params.movieId)}
                                 setUser={user => this.setUser(user)} onBackClick={() => history.goBack()}
                             />
                         </Col>
@@ -148,7 +141,6 @@ class MainView extends React.Component {
                             <GenreView movie={movies.find(m => m.Genre.Name === match.params.genreName)} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
-
                 </Row>
             </Router>
         );
@@ -156,7 +148,8 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-    return { movies: state.movies }
+    const { movies, user } = state;
+    return { movies, user };
 }
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);
