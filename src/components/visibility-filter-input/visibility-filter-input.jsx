@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // react-bootstrap UI
@@ -20,3 +21,8 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { setFilter })(VisibilityFilterInput);
+
+VisibilityFilterInput.propTypes = {
+    visibilityFilter: PropTypes.string.isRequired,
+    setFilter: PropTypes.func.isRequired
+}

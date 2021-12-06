@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // react-bootstrap UI
@@ -34,4 +35,8 @@ export function Topbar({ onLoggedOut }) {
       </Container>
     </Navbar>
   )
+}
+
+Topbar.propTypes = {
+  onLoggedOut: PropTypes.func.isRequired
 }

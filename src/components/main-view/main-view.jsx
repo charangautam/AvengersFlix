@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
@@ -153,3 +155,10 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { setMovies, setUser })(MainView);
+
+MainView.propTypes = {
+    movies: PropTypes.array,
+    user: PropTypes.any,
+    setMovies: PropTypes.func,
+    setUser: PropTypes.func
+}

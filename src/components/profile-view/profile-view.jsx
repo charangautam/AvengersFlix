@@ -160,10 +160,7 @@ ProfileView.propTypes = {
         Birthday: PropTypes.instanceOf(Date),
         FavoriteMovies: PropTypes.array
     }).isRequired,
-    movies: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        Title: PropTypes.string.isRequired,
-    }),
+    movies: PropTypes.array.isRequired,
     setUser: PropTypes.func.isRequired,
     onLoggedOut: PropTypes.func.isRequired,
     onBackClick: PropTypes.func.isRequired,

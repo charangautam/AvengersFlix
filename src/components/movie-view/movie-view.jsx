@@ -14,7 +14,6 @@ export function MovieView({ movie, user, setUser, onBackClick }) {
         console.log(movie._id)
         axios.post(`https://avengers-database.herokuapp.com/users/${user.Username}/movies/${movie._id}`)
             .then(response => {
-                console.log(response.data);
                 setUser(response.data);
             })
             .catch(err => {
@@ -25,7 +24,6 @@ export function MovieView({ movie, user, setUser, onBackClick }) {
     const pullFromFave = () => {
         axios.delete(`https://avengers-database.herokuapp.com/users/${user.Username}/movies/${movie._id}`)
             .then(response => {
-                console.log(response.data);
                 setUser(response.data);
             })
             .catch(err => {
