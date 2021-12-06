@@ -63341,7 +63341,7 @@ ProfileView.propTypes = {
     Username: _propTypes.default.string.isRequired,
     Email: _propTypes.default.string.isRequired,
     Password: _propTypes.default.string.isRequired,
-    Birthday: _propTypes.default.instanceOf(Date),
+    Birthday: _propTypes.default.string,
     FavoriteMovies: _propTypes.default.array
   }).isRequired,
   movies: _propTypes.default.array.isRequired,
@@ -63387,8 +63387,6 @@ function MovieView(_ref) {
       onBackClick = _ref.onBackClick;
 
   var addToFave = function addToFave() {
-    console.log(movie._id);
-
     _axios.default.post("https://avengers-database.herokuapp.com/users/".concat(user.Username, "/movies/").concat(movie._id)).then(function (response) {
       setUser(response.data);
     }).catch(function (err) {

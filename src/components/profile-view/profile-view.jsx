@@ -157,7 +157,7 @@ ProfileView.propTypes = {
         Username: PropTypes.string.isRequired,
         Email: PropTypes.string.isRequired,
         Password: PropTypes.string.isRequired,
-        Birthday: PropTypes.instanceOf(Date),
+        Birthday: PropTypes.string,
         FavoriteMovies: PropTypes.array
     }).isRequired,
     movies: PropTypes.array.isRequired,

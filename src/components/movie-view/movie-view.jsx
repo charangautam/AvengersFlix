@@ -11,7 +11,6 @@ import './movie-view.scss'
 export function MovieView({ movie, user, setUser, onBackClick }) {
 
     const addToFave = () => {
-        console.log(movie._id)
         axios.post(`https://avengers-database.herokuapp.com/users/${user.Username}/movies/${movie._id}`)
             .then(response => {
                 setUser(response.data);
