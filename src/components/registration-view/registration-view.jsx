@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 // scss file
 import './registration-view.scss';
+// logo img
+import img from "../../logo.png";
 
 export function RegistrationView() {
     const [username, setUsername] = useState('');
@@ -42,7 +44,16 @@ export function RegistrationView() {
     }
 
     return (
-        <div className="mt-5 d-flex justify-content-center">
+        <div className="mt-3 d-flex flex-column justify-content-center align-items-center">
+            <h1 className="d-flex align-items-center mb-5" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: "#777978" }}>
+                <img
+                    src={img}
+                    height="60"
+                    width="60"
+                    className="d-inline-block align-top"
+                    alt="AvengersFlix logo"
+                />vengersFlix
+            </h1>
             <Form className="registration-view" onSubmit={handleSubmit} style={{ textAlign: "center" }}>
                 <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Register</h1>
                 <FloatingLabel controlId="formUsername" label="Username*" className="mb-3 mt-4">

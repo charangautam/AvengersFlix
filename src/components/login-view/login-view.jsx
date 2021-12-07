@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 
 // react-bootstrap UI
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
-
 // scss file 
 import './login-view.scss'
+// logo img
+import img from "../../logo.png";
+
 
 export function LoginView({ onLoggedIn }) {
     const [username, setUsername] = useState('');
@@ -35,7 +37,16 @@ export function LoginView({ onLoggedIn }) {
     }
 
     return (
-        <div className="mt-5 d-flex justify-content-center">
+        <div className="mt-4 d-flex flex-column justify-content-center align-items-center">
+            <h1 className="d-flex align-items-center mb-5" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: "#777978" }}>
+                <img
+                    src={img}
+                    height="60"
+                    width="60"
+                    className="d-inline-block align-top"
+                    alt="AvengersFlix logo"
+                />vengersFlix
+            </h1>
             <Form className="login-view" onSubmit={handleSubmit} style={{ textAlign: "center" }}>
                 <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Login</h1>
                 <FloatingLabel controlId="formUsername" label="Username" className="mb-3 mt-4">
