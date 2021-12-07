@@ -1,1 +1,4 @@
-/* /profile-view.jsx 200
+[[redirects]]
+  from = "/"
+  to = "/profile"
+  status = 200
