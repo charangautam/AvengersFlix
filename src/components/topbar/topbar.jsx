@@ -26,7 +26,7 @@ export function Topbar({ onLoggedOut }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-center" style={{ width: "100%" }}>
-            <Nav.Link href="/profile" style={{ fontSize: "20px" }}>Profile</Nav.Link>
+            <Nav.Link as={Link} to="/profile" style={{ fontSize: "20px" }}>Profile</Nav.Link>
           </Nav>
           <Link to={'/'}>
             <Button variant="danger" onClick={onLoggedOut} style={{ width: "90px" }}>Log out</Button>
