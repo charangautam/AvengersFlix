@@ -63,6 +63,7 @@ function ProfileView({ user, setUser, movies, onLoggedOut, onBackClick }) {
             .then(response => {
                 console.log(response.data);
                 setUser(response.data);
+                window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
             })
             .catch(e => {
                 console.log('error updating the user')

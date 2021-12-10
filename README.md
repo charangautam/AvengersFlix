@@ -1,5 +1,3 @@
-Link to the functional website: https://avengersflix.netlify.app/
-
 Creating the front-end for an rest-API. Backend was built using mongoDB, expressJS and nodeJS. Frontent will be created using ReactJS.
 
 
