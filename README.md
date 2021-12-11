@@ -1,6 +1,6 @@
 ## https://avengersflix.netlify.app/
 
-^ Link to the fully functional website ^
+^ Link to the functional website ^
 
 The front-end for an rest-API (https://github.com/charangautam/movie_api). Backend was built using mongoDB, expressJS and nodeJS. Frontent is created using ReactJS.
 
