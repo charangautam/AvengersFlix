@@ -1,4 +1,4 @@
-# AvengersFlix in React #
+# AvengersFlix (React) #
 https://avengersflix.netlify.app/
 
 ## Objective ##
