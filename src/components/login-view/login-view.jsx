@@ -47,6 +47,9 @@ export function LoginView({ onLoggedIn }) {
                     alt="AvengersFlix logo"
                 />vengersFlix
             </h1>
+             <p className="d-flex text-center mb-5 w-50" style={{ fontWeight: 600, fontSize: "17px" }}>
+                An application that consists of the most popular movies of the Avengers heroes. Created for fans to be able view Avengers movies and their details in one location. Join us!
+            </p>
             <Form className="login-view" onSubmit={handleSubmit} style={{ textAlign: "center" }}>
                 <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Login</h1>
                 <FloatingLabel controlId="formUsername" label="Username" className="mb-3 mt-4">
