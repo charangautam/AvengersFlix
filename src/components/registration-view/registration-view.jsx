@@ -45,7 +45,7 @@ export function RegistrationView() {
 
     return (
         <div className="mt-3 d-flex flex-column justify-content-center align-items-center">
-            <h1 className="d-flex align-items-center mb-5" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: "#777978" }}>
+            <h1 className="d-flex align-items-center" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: "#777978" }}>
                 <img
                     src={img}
                     height="60"
